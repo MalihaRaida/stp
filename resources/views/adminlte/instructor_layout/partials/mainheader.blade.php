@@ -93,10 +93,8 @@
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <div class="pull-left">
-<!--                                    <a href="{{ url('/settings') }}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>-->
-                                </div>
-                                <div class="pull-right">
+                               
+                                
                                     <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
                                        onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
@@ -108,7 +106,7 @@
                                         <input type="submit" value="logout" style="display: none;">
                                     </form>
 
-                                </div>
+                             
                             </li>
                         </ul>
                     </li>
