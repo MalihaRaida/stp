@@ -15,6 +15,7 @@ class UsersTableSeeder extends Seeder
            'name' => 'zns',
            'usertype' => 1,
            'email' => 'zns@gmail.com',
+           'dept'=>'CSE',
            'password' => Hash::make('password') 
         ]);
 
@@ -22,6 +23,7 @@ class UsersTableSeeder extends Seeder
            'name' => 'naw',
            'usertype' => 1,
            'email' => 'naw@gmail.com',
+           'dept'=>'EEE',
            'password' => Hash::make('password') 
         ]);
 
@@ -29,6 +31,7 @@ class UsersTableSeeder extends Seeder
            'name' => 'rai',
            'usertype' => 2,
            'email' => 'rai@gmail.com',
+           'dept'=>'CSE',
            'password' => Hash::make('password') 
         ]);
     }
