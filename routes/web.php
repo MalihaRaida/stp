@@ -26,6 +26,8 @@ Route::get('/admin/dashboard','AdminController@dashboard');
 
 Route::get('/admin/course_insertion','AdminController@course_insertion');
 
+Route::post('/admin/course_insertion/add_course','AdminController@add_course');
+
 //teacher course view
 
 Route::get('/admin/course_view','AdminController@course_view');

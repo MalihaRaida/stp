@@ -9,7 +9,7 @@
 
 <div class="content container-fluid">
     <div class="box box-default">
-        <form id="dynamic_form" method="post">
+        <form action="{{url('admin/course_insertion/add_course')}}" method="post">
         {{csrf_field()}}
         <div class="box-header"><i ></i>
             <h5 class='box-title'></h5>
@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                        	<td><button class="add btn btn-flat btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                        	<td><button class="add btn btn-flat btn-primary"><i class="fa fa-plus-circle"></i></button></td></i></button></td>
                         	<td><input type="text" class="form-control" name="c_code[]" id="c_code"></td>
                         	<td><input type="text" class="form-control" name="c_name[]" id="c_name"></td>
                         	<td><select class="select2 form-control" id="dept" name="dept[]">
@@ -52,7 +52,7 @@
                                     <option value="8th Semester">8th Semester</option>
                          </select>
                              </td> 
-                             <td><input type="text" class="form-control" name="cedit[]" id="credit"></td>
+                             <td><input type="text" class="form-control" name="credit[]" id="credit"></td>
                             
                         </tr>
                     </tbody>
@@ -61,7 +61,7 @@
         </div>
             <div class="box-footer">
                 <div class="pull-right">
-                    <button onclick="submit()" class="btn btn-flat btn-success"><i class="fa fa-check-circle"></i>Add course</button>
+                    <button onclick="submit()" class="btn btn-flat btn-success"><i class="fa fa-check-circle"></i> Save Changes</button>
                 </div>
             </div>
         </form>
@@ -69,6 +69,8 @@
 </div>
 @endsection
 
+@section('footer-script')
+<script src='{{asset('plugins/select2/select2.js')}}'></script>
 <script>
    var no = 1;
 
@@ -118,3 +120,4 @@ $('#dynamic_field').on('click','.remove', function(e){
 
 
 </script>
+@endsection
