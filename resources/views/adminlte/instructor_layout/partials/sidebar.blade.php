@@ -22,10 +22,9 @@
        
             <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MENU</li>
-            <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home '></i> <span>Home</span></a></li>
-            <li class=""><a href="{{ url('/instructor/faculty_loading') }}"><i class='fa fa-calendar-check-o '></i> <span>Course View</span></a></li>
-            <li class=""><a href="{{url('/instructor/semester_occupied')}}"><i class='fa fa-calendar-check-o '></i> <span>Semester Wise course View</span></a></li>
-            <li class=""><a href="{{ url('/account/change_password') }}"><i class='fa fa-lock '></i> <span>Change Password</span></a></li>
+            <li class="active"><a href="/instructor/dashboard"><i class='fa fa-home '></i> <span>Home</span></a></li>
+            <li class=""><a href="/instructor/course_registration"><i class='fa fa-calendar-check-o '></i> <span>Course Registration</span></a></li>
+            <li class=""><a href="/instructor/instructor_result"><i class='fa fa-pencil '></i> <span>Result</span></a></li>
     </section>
     <!-- /.sidebar -->
 </aside>
