@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ResultTable extends Migration
+class CreateResultTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,6 @@ class ResultTable extends Migration
     public function up()
     {
         Schema::create('result', function (Blueprint $table) {
-            //
             $table->string('course',20);
             $table->year('result_year');
             $table->unsignedBigInteger('student_id');
@@ -27,16 +26,14 @@ class ResultTable extends Migration
             $table->decimal('final',5,2);
             $table->char('grade',2);
             $table->string('semester');
-                   
+            $table->string('department');
+
         });
-
-
-
-         Schema::table('result', function (Blueprint $table) {
+        Schema::table('result', function (Blueprint $table) {
             //
-            $table->primary(['course','result_year']);
+            $table->primary(['student_id','semester','department','course','result_year']);
 
-            $table->foreign('student_id')->references('id')->on('users');
+            $table->foreign('student_id')->references('student_id')->on('course_registration');
         });
     }
 
@@ -47,9 +44,6 @@ class ResultTable extends Migration
      */
     public function down()
     {
-        Schema::table('result', function (Blueprint $table) {
-            //
-            Schema::dropIfExists('result');
-        });
+        Schema::dropIfExists('result');
     }
 }
