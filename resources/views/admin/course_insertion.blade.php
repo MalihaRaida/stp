@@ -6,6 +6,10 @@
     </h1>
 </section>
 
+<?php  
+use Carbon\Carbon;
+$mon=Carbon::now()->month;
+?>
 
 <div class="content container-fluid">
     <div class="box box-default">
@@ -42,14 +46,19 @@
                              </td> 
                              <td><select class="select2 form-control" id="sem" name="sem[]">
                                     <option>Please Select</option>
+                                    @if ($mon<6){
                                     <option value="1st Semester">1st Semester</option>
-                                    <option value="2nd Semester">2nd Semester</option>
                                     <option value="3rd Semester">3rd Semester</option>
-                                    <option value="4th Semester">4th Semester</option>
                                     <option value="5th Semester">5th Semester</option>
-                                    <option value="6th Semester">6th Semester</option>
                                     <option value="7th Semester">7th Semester</option>
+                                }
+                                    @else {
+                                    <option value="2nd Semester">2nd Semester</option>                                    
+                                    <option value="4th Semester">4th Semester</option>                                    
+                                    <option value="6th Semester">6th Semester</option>
                                     <option value="8th Semester">8th Semester</option>
+                                }
+                                @endif
                          </select>
                              </td> 
                              <td><input type="text" class="form-control" name="credit[]" id="credit"></td>
@@ -61,7 +70,7 @@
         </div>
             <div class="box-footer">
                 <div class="pull-right">
-                    <button onclick="submit()" class="btn btn-flat btn-success"><i class="fa fa-check-circle"></i> Save Changes</button>
+                    <button onclick="submit()" class="btn btn-flat btn-success"> Save Changes</button>
                 </div>
             </div>
         </form>
