@@ -32,6 +32,10 @@ Route::post('/admin/course_insertion/add_course','AdminController@add_course');
 
 Route::get('/admin/course_view','AdminController@course_view');
 
+Route::get('/ajax/admin/edit_course_view','AdminController@edit_course_view');
+
+Route::get('/ajax/admin/view_course_view','AdminController@view_course_view');
+
 //teacher result
 
 Route::get('/admin/admin_result','AdminController@admin_result');
@@ -45,6 +49,8 @@ Route::get('/instructor/dashboard','InstructorController@dashboard');
 //student course registration
 
 Route::get('/instructor/course_registration','InstructorController@course_registration');
+
+Route::get('/ajax/instructor/display_course_registration','InstructorController@display_course_registration');
 
 //student result
 

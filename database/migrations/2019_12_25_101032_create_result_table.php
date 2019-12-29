@@ -27,14 +27,8 @@ class CreateResultTable extends Migration
             $table->char('grade',2);
             $table->string('semester');
             $table->string('department');
-
         });
-        Schema::table('result', function (Blueprint $table) {
-            //
-            $table->primary(['student_id','semester','department','course','result_year']);
-
-            $table->foreign('student_id')->references('student_id')->on('course_registration');
-        });
+        
     }
 
     /**
