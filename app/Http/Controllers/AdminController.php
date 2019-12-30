@@ -99,7 +99,6 @@ class AdminController extends Controller
             $sem = request()->sem;
             $dept = request()->dept;
             $year=now()->year;
-            $mon=Carbon::now()->month;
             $detail = \App\course_registration::join('users','users.id','course_registration.id')->where('users.dept',$dept)->where('course_registration.course',$code)->where('course_registration.semester',$sem)->where('course_registration.enroll_year',$year)->get();
 
             return view('admin.ajax.view_course_view',compact('detail','code'));
