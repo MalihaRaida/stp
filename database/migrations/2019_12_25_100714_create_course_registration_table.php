@@ -20,10 +20,6 @@ class CreateCourseRegistrationTable extends Migration
             $table->year('enroll_year');
             $table->string('course',20);
         });
-
-        Schema::table('course_registration', function (Blueprint $table) {
-            $table->primary(['student_id','semester','enroll_year']);
-        });
     }
 
     /**
