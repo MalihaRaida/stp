@@ -31,10 +31,13 @@ Route::post('/admin/course_insertion/add_course','AdminController@add_course');
 //teacher course view
 
 Route::get('/admin/course_view','AdminController@course_view');
+Route::get('/admin/course_view/del/{id}','AdminController@destroy');
 
 Route::get('/ajax/admin/edit_course_view','AdminController@edit_course_view');
-
+Route::post('/admin/course_insertion/update_course','AdminController@update_course');
 Route::get('/ajax/admin/view_course_view','AdminController@view_course_view');
+
+
 
 //teacher result
 
