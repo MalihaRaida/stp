@@ -26,7 +26,7 @@
                     </tbody>          
              </table>
         <div class="modal-footer">
-          <button type="button" class="btn btn-flat btn-default pull-left" data-dismiss="modal">Close</button>
+          <button style="float: right" type="button" class="btn btn-flat btn-default pull-left" data-dismiss="modal">Close</button>
         </div>
     </div>
 </form>

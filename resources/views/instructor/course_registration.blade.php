@@ -83,7 +83,7 @@ $mon=Carbon::now()->month;
         array['sid']=sid;
         array['dept']=dept;
         array['sem']=sem;
-        $.ajax({
+        $.ajax({ 
             type:"GET",
             url:"/ajax/instructor/display_course_registration",
             data:array,

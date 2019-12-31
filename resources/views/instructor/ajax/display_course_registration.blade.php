@@ -13,6 +13,8 @@
                 </tr>
                 @endforeach
                 </table>
+            </div>
+                <button style="float: right" type="submit" class="btn btn-flat btn-primary">Register</button>
         </div>
     </div>
 </div>
