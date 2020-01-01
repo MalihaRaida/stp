@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Routing\Redirector;
 use Auth;
 use Carbon\Carbon;
 
@@ -69,6 +70,17 @@ class AdminController extends Controller
         }
     }
 
+    function update_course(Request $request)
+    {
+        $course =\App\course_tech::find($request->index);
+        $course->course_name = $request->course_name;
+        $course->course_dept = $request->dept;
+        $course->semester = $request->semester;
+        $course->credit = $request->credit;
+        $course->save();
+          return redirect('admin/course_view')->with('success','Successfully Updated!');
+    }
+
     function course_view(){
         $user_id=Auth::user()->id;
         $year=now()->year;
@@ -90,6 +102,15 @@ class AdminController extends Controller
             $detail = \App\course_tech::where('id',$no)->get();
             return view('admin.ajax.edit_course_view',compact('detail'));
         }
+    }
+
+
+
+    function destroy($id)
+    {
+        $course=\App\course_tech::find($id);
+        $course->delete();
+        return redirect('admin/course_view')->with('success','Successfully Deleted!');
     }
 
 

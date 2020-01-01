@@ -1,10 +1,19 @@
 @extends('layouts.admin')
 @section('main-content')
 
+@if(Session::has('success'))
+<div class='col-sm-12'>
+    <div class='callout callout-success'>
+        {{Session::get('success')}}
+    </div>
+</div>
+@endif
+
 <section class="content-header">
     <h1>
         View Course
     </h1>
+
 </section>
 
 
@@ -13,6 +22,7 @@
         <div class="box-header"><i ></i>
             <h5 class='box-title'></h5>
         </div>
+
         <div class="box-body">
             <div class="table-responsive">
                 <table class="table table-bordered">
@@ -43,7 +53,7 @@
                         <td>{{$details->credit}}</td>
                         <td><button type="button" class="btn btn-primary waves-light" onclick="view_course('{{$details->course_code}}','{{$details->semester}}','{{$details->course_dept}}')">View</button></td>
                         <td><button type="button" class="btn btn-warning waves-light"onclick="edit_course('{{$details->id}}')">Edit</button></td>
-                        <td><button type="button" class="btn btn-danger waves-light">Delete</button></td>
+                        <td><button type="button" class="btn btn-danger waves-light" onclick="location.href='{{ url('/admin/course_view/del',$details->id)}}'">Delete</button></td>
                     </tr>
                     <?php
                     $no++;

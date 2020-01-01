@@ -1,7 +1,8 @@
 <div class="modal fade" id="Modal2">
     <div class="modal-dialog">
       <div class="modal-content">
-          <form>
+        <form action="{{url('/admin/course_insertion/update_course')}}" method="post">
+                {{csrf_field()}}
             @foreach($detail as $details)
         <div class="modal-body">           
             <h4 class="modal-title" style="text-align: center;">{{$details->course_code}}</h4>
@@ -9,6 +10,7 @@
             	<div class="col-sm-8">
                 <div class="form-group">
                     <label>Course Name</label>
+                    <input type="text" name="index" class="form-control" value="{{$details->id}}" style="display:none;">
                     <input type="text" name="course_name" class="form-control" value="{{$details->course_name}}">
                 </div>
             </div>
@@ -23,7 +25,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label>Department</label>
-                            <input type="text" name="department" class="form-control" value="{{$details->course_dept}}">
+                            <input type="text" name="dept" class="form-control" value="{{$details->course_dept}}">
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -34,12 +36,13 @@
                     </div>
                 </div>               
         </div>
-       @endforeach
+      
         <div class="modal-footer">
           <button type="button" class="btn btn-flat btn-default pull-left" data-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-flat btn-primary">Save changes</button>
         </div>
         </form>
+         @endforeach
       </div>
     </div>
   </div>

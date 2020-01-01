@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Auth;
+
 use Carbon\Carbon;
 
 class InstructorController extends Controller
