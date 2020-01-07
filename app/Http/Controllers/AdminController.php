@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Routing\Redirector;
 use Auth;
 use Carbon\Carbon;
 
@@ -69,6 +70,17 @@ class AdminController extends Controller
         }
     }
 
+    function update_course(Request $request)
+    {
+        $course =\App\course_tech::find($request->index);
+        $course->course_name = $request->course_name;
+        $course->course_dept = $request->dept;
+        $course->semester = $request->semester;
+        $course->credit = $request->credit;
+        $course->save();
+          return redirect('admin/course_view')->with('success','Successfully Updated!');
+    }
+
     function course_view(){
         $user_id=Auth::user()->id;
         $year=now()->year;
@@ -93,13 +105,21 @@ class AdminController extends Controller
     }
 
 
+
+    function destroy($id)
+    {
+        $course=\App\course_tech::find($id);
+        $course->delete();
+        return redirect('admin/course_view')->with('success','Successfully Deleted!');
+    }
+
+
      function view_course_view(){
             if(request()->ajax()){
             $code = request()->code;
             $sem = request()->sem;
             $dept = request()->dept;
             $year=now()->year;
-            $mon=Carbon::now()->month;
             $detail = \App\course_registration::join('users','users.id','course_registration.id')->where('users.dept',$dept)->where('course_registration.course',$code)->where('course_registration.semester',$sem)->where('course_registration.enroll_year',$year)->get();
 
             return view('admin.ajax.view_course_view',compact('detail','code'));
