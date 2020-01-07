@@ -111,6 +111,12 @@ class AdminController extends Controller
        
     }
 
+function display_result(){
+    if(request()->ajax()){
+            $code = request()->code;
 
+        }
+        return view('admin.ajax.display_result',compact('code'));
+}
 
 }
