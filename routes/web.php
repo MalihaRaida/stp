@@ -51,9 +51,11 @@ Route::get('/instructor/dashboard','InstructorController@dashboard');
 
 //student course registration
 
-Route::get('/instructor/course_registration','InstructorController@course_registration');
+Route::get('/instructor/course_registration','InstructorController@view_course_registration');
 
-Route::get('/ajax/instructor/display_course_registration','InstructorController@display_course_registration');
+Route::get('/ajax/instructor/display_course_registration','InstructorController@display_course');
+
+Route::post('/instructor/course_registration/courses','InstructorController@course_registration');
 
 //student result
 
