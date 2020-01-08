@@ -138,16 +138,31 @@ class AdminController extends Controller
     }
 
     function admin_result(){
-        return view('admin.result');
+        $user_id=Auth::user()->id;
+        $year=now()->year;
+        $mon=Carbon::now()->month;
+
+        if($mon<6){
+            $detail = \App\course_tech::where('teacher_id',$user_id)->where('teach_year',$year)->where('session',"Winter")->get();
+        }
+        else{
+            $detail = \App\course_tech::where('teacher_id',$user_id)->where('teach_year',$year)->where('session',"Spring")->get();
+        }
+        return view('admin.result',compact('detail'));
        
     }
 
 function display_result(){
     if(request()->ajax()){
-            $code = request()->code;
+            $no = request()->all();
+            $dept = \App\course_tech::where('course_code',$no)->value('course_dept');
+
+            $sem = \App\course_tech::where('course_code',$no)->value('semester');
+            $year = \App\course_tech::where('course_code',$no)->value('teach_year');
+            $detail = \App\course_registration::join('users','users.id','course_registration.id')->where('users.dept',$dept)->where('course_registration.course',$no)->where('course_registration.semester',$sem)->where('course_registration.enroll_year',$year)->get();
 
         }
-        return view('admin.ajax.display_result',compact('code'));
+        return view('admin.ajax.display_result',compact('detail'));
 }
 
 }

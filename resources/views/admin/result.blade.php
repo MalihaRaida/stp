@@ -29,9 +29,11 @@ $mon=Carbon::now()->month;
                     <div class="form-group" id="displaydept">
                        
                         <select class="select2 form-control" id="code">
-                        	 
+                        	
                                     <option>Please Select</option>
-                                    
+                                    @foreach($detail as $details)
+                                    <option>{{$details->course_code}}</option>
+                                    @endforeach 
                         </select>
                         
                     </div>
