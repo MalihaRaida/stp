@@ -34,5 +34,6 @@ class UsersTableSeeder extends Seeder
            'dept'=>'CSE',
            'password' => Hash::make('password') 
         ]);
+
     }
 }

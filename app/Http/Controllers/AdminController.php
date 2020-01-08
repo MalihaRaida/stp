@@ -116,10 +116,11 @@ class AdminController extends Controller
 
      function view_course_view(){
             if(request()->ajax()){
-            $code = request()->code;
-            $sem = request()->sem;
-            $dept = request()->dept;
-            $year=now()->year;
+            $no = request()->all();
+            $dept = \App\course_tech::where('id',$no)->value('course_dept');
+            $code = \App\course_tech::where('id',$no)->value('course_code');
+            $sem = \App\course_tech::where('id',$no)->value('semester');
+            $year = \App\course_tech::where('id',$no)->value('teach_year');
             $detail = \App\course_registration::join('users','users.id','course_registration.id')->where('users.dept',$dept)->where('course_registration.course',$code)->where('course_registration.semester',$sem)->where('course_registration.enroll_year',$year)->get();
 
             return view('admin.ajax.view_course_view',compact('detail','code'));
