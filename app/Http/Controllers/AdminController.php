@@ -109,17 +109,28 @@ class AdminController extends Controller
     function destroy($id)
     {
         $course=\App\course_tech::find($id);
-        $course->delete();
-        return redirect('admin/course_view')->with('success','Successfully Deleted!');
+        $dept = \App\course_tech::where('id',$id)->value('course_dept');
+        $code = \App\course_tech::where('id',$id)->value('course_code');
+        $sem = \App\course_tech::where('id',$id)->value('semester');
+        $year = \App\course_tech::where('id',$id)->value('teach_year');
+        $cnt = \App\course_registration::join('users','users.id','course_registration.id')->where('users.dept',$dept)->where('course_registration.course',$code)->where('course_registration.semester',$sem)->where('course_registration.enroll_year',$year)->count();
+        if($cnt== 0){
+            $course->delete();
+            return redirect('admin/course_view')->with('success','Successfully Deleted!');
+        }
+        else{
+            return redirect('admin/course_view')->with('error','Course has been already occpied!');
+        }        
     }
 
 
      function view_course_view(){
             if(request()->ajax()){
-            $code = request()->code;
-            $sem = request()->sem;
-            $dept = request()->dept;
-            $year=now()->year;
+            $no = request()->all();
+            $dept = \App\course_tech::where('id',$no)->value('course_dept');
+            $code = \App\course_tech::where('id',$no)->value('course_code');
+            $sem = \App\course_tech::where('id',$no)->value('semester');
+            $year = \App\course_tech::where('id',$no)->value('teach_year');
             $detail = \App\course_registration::join('users','users.id','course_registration.id')->where('users.dept',$dept)->where('course_registration.course',$code)->where('course_registration.semester',$sem)->where('course_registration.enroll_year',$year)->get();
 
             return view('admin.ajax.view_course_view',compact('detail','code'));
@@ -127,10 +138,31 @@ class AdminController extends Controller
     }
 
     function admin_result(){
-        return view('admin.result');
+        $user_id=Auth::user()->id;
+        $year=now()->year;
+        $mon=Carbon::now()->month;
+
+        if($mon<6){
+            $detail = \App\course_tech::where('teacher_id',$user_id)->where('teach_year',$year)->where('session',"Winter")->get();
+        }
+        else{
+            $detail = \App\course_tech::where('teacher_id',$user_id)->where('teach_year',$year)->where('session',"Spring")->get();
+        }
+        return view('admin.result',compact('detail'));
        
     }
 
+function display_result(){
+    if(request()->ajax()){
+            $no = request()->all();
+            $dept = \App\course_tech::where('course_code',$no)->value('course_dept');
 
+            $sem = \App\course_tech::where('course_code',$no)->value('semester');
+            $year = \App\course_tech::where('course_code',$no)->value('teach_year');
+            $detail = \App\course_registration::join('users','users.id','course_registration.id')->where('users.dept',$dept)->where('course_registration.course',$no)->where('course_registration.semester',$sem)->where('course_registration.enroll_year',$year)->get();
+
+        }
+        return view('admin.ajax.display_result',compact('detail'));
+}
 
 }

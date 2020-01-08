@@ -9,7 +9,7 @@
              <table class="table table-bordered" id="dynamic_field">
                     <thead>
                         <tr>
-                            <th width="5%"></th>
+                            <th width="5%">No</th>
                             <th width="15%">Sid</th>
                             <th width="30%">Name</th>
                         </tr>
@@ -22,6 +22,9 @@
                         <td>{{$no}}</td>
                         <td>{{$details->student_id}}</td>
                         <td>{{$details->name}}</td>
+                    <?php
+                    $no++;
+                    ?>
                     @endforeach 
                     </tbody>          
              </table>

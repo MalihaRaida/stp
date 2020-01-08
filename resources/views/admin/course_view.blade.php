@@ -7,6 +7,12 @@
         {{Session::get('success')}}
     </div>
 </div>
+@elseif(Session::has('error'))
+<div class='col-sm-12'>
+    <div class='callout callout-warning'>
+        {{Session::get('error')}}
+    </div>
+</div>
 @endif
 
 <section class="content-header">
@@ -51,7 +57,7 @@
                         <td>{{$details->course_dept}}</td>
                         <td>{{$details->semester}}</td>
                         <td>{{$details->credit}}</td>
-                        <td><button type="button" class="btn btn-primary waves-light" onclick="view_course('{{$details->course_code}}','{{$details->semester}}','{{$details->course_dept}}')">View</button></td>
+                        <td><button type="button" class="btn btn-primary waves-light" onclick="view_course('{{$details->id}}')">View</button></td>
                         <td><button type="button" class="btn btn-warning waves-light"onclick="edit_course('{{$details->id}}')">Edit</button></td>
                         <td><button type="button" class="btn btn-danger waves-light" onclick="location.href='{{ url('/admin/course_view/del',$details->id)}}'">Delete</button></td>
                     </tr>
@@ -70,11 +76,9 @@
 @endsection
 @section('footer-script')
 <script>
-    function view_course(code,dept,sem){
+    function view_course(id){
         var array={};
-        array['code']=code;
-        array['dept']=dept;
-        array['sem']=sem;
+        array['id']=id;
         $.ajax({
             type:"GET",
             url:"/ajax/admin/view_course_view",

@@ -1,5 +1,5 @@
 <div class='box box-default box-solid'>
-    <div class='box-header bg-navy-active' style="text-align: center;"><h5 class='box-title'>Available Courses</h5></div>
+    <div class='box-header bg-navy-active' style="text-align: center;"><h5 class='box-title'>Available Course</h5></div>
     <div class='box-body' id="courseregistration">
         <div >
             <form action="{{url('/instructor/course_registration/courses')}}" method="post">

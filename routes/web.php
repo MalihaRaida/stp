@@ -43,6 +43,8 @@ Route::get('/ajax/admin/view_course_view','AdminController@view_course_view');
 
 Route::get('/admin/admin_result','AdminController@admin_result');
 
+Route::get('/ajax/admin/display_result','AdminController@display_result');
+
 
 //student
 //student dasboard
@@ -60,3 +62,4 @@ Route::post('/instructor/course_registration/courses','InstructorController@cour
 //student result
 
 Route::get('/instructor/instructor_result','InstructorController@instructor_result');
+
