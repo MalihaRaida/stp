@@ -109,8 +109,18 @@ class AdminController extends Controller
     function destroy($id)
     {
         $course=\App\course_tech::find($id);
-        $course->delete();
-        return redirect('admin/course_view')->with('success','Successfully Deleted!');
+        $dept = \App\course_tech::where('id',$id)->value('course_dept');
+        $code = \App\course_tech::where('id',$id)->value('course_code');
+        $sem = \App\course_tech::where('id',$id)->value('semester');
+        $year = \App\course_tech::where('id',$id)->value('teach_year');
+        $cnt = \App\course_registration::join('users','users.id','course_registration.id')->where('users.dept',$dept)->where('course_registration.course',$code)->where('course_registration.semester',$sem)->where('course_registration.enroll_year',$year)->count();
+        if($cnt== 0){
+            $course->delete();
+            return redirect('admin/course_view')->with('success','Successfully Deleted!');
+        }
+        else{
+            return redirect('admin/course_view')->with('error','Course has been already occpied!');
+        }        
     }
 
 

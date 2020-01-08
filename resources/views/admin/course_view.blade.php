@@ -7,6 +7,12 @@
         {{Session::get('success')}}
     </div>
 </div>
+@elseif(Session::has('error'))
+<div class='col-sm-12'>
+    <div class='callout callout-warning'>
+        {{Session::get('error')}}
+    </div>
+</div>
 @endif
 
 <section class="content-header">
