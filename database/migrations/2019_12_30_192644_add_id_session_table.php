@@ -14,7 +14,7 @@ class AddIdSessionTable extends Migration
     public function up()
     {
         Schema::table('result', function (Blueprint $table) {
-            $table->bigIncrements('id');
+           
             $table->string('session');
         });
     }
@@ -27,7 +27,7 @@ class AddIdSessionTable extends Migration
     public function down()
     {
         Schema::table('result', function (Blueprint $table) {
-            $table->dropColumn('id');
+            
             $table->dropColumn('session');
         });
     }

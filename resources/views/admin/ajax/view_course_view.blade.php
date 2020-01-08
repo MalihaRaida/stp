@@ -19,11 +19,9 @@
                     $no=1;
                      ?> 
                     @foreach($detail as $details)
-                    <tr>
                         <td>{{$no}}</td>
                         <td>{{$details->student_id}}</td>
                         <td>{{$details->name}}</td>
-                    </tr>
                     <?php
                     $no++;
                     ?>
