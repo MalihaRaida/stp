@@ -165,4 +165,35 @@ function display_result(){
         return view('admin.ajax.display_result',compact('detail'));
 }
 
+function save_result(Request $request)
+{
+    if(Auth::user()->usertype == 1){
+            $mon=Carbon::now()->month;
+            $user_id=Auth::user()->id;
+            $year=now()->year;
+            for($x=0;$x<=count($request->attendence);$x++){
+                if(array_key_exists($x, $request->attendence)){
+                    $result = new \App\result;
+                    $result->attend = $request->attendence[$x];
+                    $result->course = $request->course;
+                    $result->student_id = $request->sid[$x];
+                    $result->result_year = $year;
+                    if($mon<6){
+                        $result->session="Winter";
+                         $detail = \App\course_tech::where('teacher_id',$user_id)->where('teach_year',$year)->where('session',"Winter")->get();
+                    }
+                    else{
+                        $result->session="Spring";
+                          $detail = \App\course_tech::where('teacher_id',$user_id)->where('teach_year',$year)->where('session',"Spring")->get();
+                    }
+                    $result->save();
+                }
+            }
+                      
+           return view('admin.result',compact('detail'));
+        }else{
+            return view('layouts.401');
+        }
+}
+
 }
