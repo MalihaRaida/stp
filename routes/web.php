@@ -42,7 +42,7 @@ Route::get('/ajax/admin/view_course_view','AdminController@view_course_view');
 //teacher result
 
 Route::get('/admin/admin_result','AdminController@admin_result');
-
+Route::post('/admin/save_result','AdminController@save_result');
 Route::get('/ajax/admin/display_result','AdminController@display_result');
 
 

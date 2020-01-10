@@ -79,7 +79,7 @@ $mon=Carbon::now()->month;
         </div>
             <div class="box-footer">
                 <div class="pull-right">
-                    <button type="submit" class="btn btn-flat btn-success"> Save Changes</button>
+                    <button type="submit" class="btn btn-flat btn-success"> Save Course</button>
                 </div>
             </div>
         </form>
