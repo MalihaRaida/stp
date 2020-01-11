@@ -15,6 +15,15 @@ class result extends Model
         'attend',
         'student_id',
         'session',
+        'q1',
+        'q2',
+        'q3',
+        'q4',
+        'mid',
+        'final',
+        'grade',
+        'semester',
+        'department'
     ];
 
      public $timestamps = false;

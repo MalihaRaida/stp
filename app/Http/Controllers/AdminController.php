@@ -175,9 +175,19 @@ function save_result(Request $request)
                 if(array_key_exists($x, $request->attendence)){
                     $result = new \App\result;
                     $result->attend = $request->attendence[$x];
+                    $result->q1 = $request->q1[$x];
+                    $result->q2 = $request->q2[$x];
+                    $result->q3 = $request->q3[$x];
+                    $result->q4 = $request->q4[$x];
+                    $result->mid = $request->mid[$x];
+                    $result->final = $request->final[$x];
+                    $result->grade = $request->grade[$x];
+
                     $result->course = $request->course;
                     $result->student_id = $request->sid[$x];
                     $result->result_year = $year;
+                    $result->semester = $request->semester;
+                    $result->department = $request->department;
                     if($mon<6){
                         $result->session="Winter";
                          $detail = \App\course_tech::where('teacher_id',$user_id)->where('teach_year',$year)->where('session',"Winter")->get();

@@ -9,8 +9,8 @@
                 <tr>
                     <th></th>
                     <th>SID</th>
-                    <th width="15%">Student Name</th>
-                    <th width="10%">Attendence</th>
+                    <th>Student Name</th>
+                    <th>Attendence</th>
                     <th>quiz1</th>
                     <th>quiz2</th>
                     <th>quiz3</th>
@@ -27,9 +27,21 @@
                         <td>
                        <input type="text" style="display: none;" name="course" value="{{$details->course}}">
                         <input type="text" style="display: none;" name="sid[]" value="{{$details->student_id}}">    {{$details->student_id}}</td>
+
                         <td>{{$details->name}}</td>
                         <td><input type="number" name="attendence[]"
                             min="0" max="30" ></td>  
+
+                        <td><input type="number" name="q1[]" ></td>
+                        <td><input type="number" name="q2[]"></td>
+                        <td><input type="number" name="q3[]"></td>
+                        <td><input type="number" name="q4[]"></td>
+                        <td><input type="number" name="mid[]"></td>
+                        <td><input type="number" name="final[]"></td>
+                        <td><input type="text" name="grade[]"></td>
+                        <td><input type="number" step="any" name="credit[]"></td>
+                        <td><input type="text" style="display: none;" name="semester" value="{{$details->semester}}"></td>
+                        <td><input type="text" style="display: none;" name="department" value="{{$details->dept}}"></td>
                    </tr>   
                     @endforeach
                </tbody>
